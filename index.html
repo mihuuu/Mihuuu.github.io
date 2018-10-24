@@ -229,6 +229,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/git_notes/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/git_notes/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-25T00:39:40+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><h3 id="建立git仓库"><a href="#建立git仓库" class="headerlink" title="建立git仓库"></a>建立git仓库</h3><p>cd到本地项目根目录下</p>
+<p>执行命令：<code>git init</code></p>
+<h4 id="添加和提交"><a href="#添加和提交" class="headerlink" title="添加和提交"></a>添加和提交</h4><ul>
+<li><p>添加到暂存区</p>
+<p>添加文件：<code>git add &lt;filename&gt;</code> </p>
+<p>添加全部：<code>git add * or git add .</code> </p>
+</li>
+<li><p>提交改动</p>
+<p><code>git commit -m &quot;代码提交信息&quot;</code></p>
+</li>
+</ul>
+<h4 id="推送改动"><a href="#推送改动" class="headerlink" title="推送改动"></a>推送改动</h4><ul>
+<li><p>将仓库连接到远程服务器（在github上创建repository，获得url地址）</p>
+<p><code>git remote add origin &lt;server&gt;</code></p>
+</li>
+<li><p>提交到远端仓库：</p>
+<p><code>git push -u origin master</code></p>
+<p>（可以把master换成其他分支）</p>
+</li>
+</ul>
+<h4 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h4><ul>
+<li><p>创建分支并切换过去：</p>
+<p><code>git checkout -b &lt;branch&gt;</code></p>
+</li>
+<li><p>切换分支：</p>
+<p><code>git checkout &lt;branch&gt;</code></p>
+</li>
+<li><p>删除分支：</p>
+<p><code>git branch -d &lt;branch&gt;</code></p>
+</li>
+<li><p>推送分支</p>
+<p><code>git push origin &lt;branch&gt;</code></p>
+</li>
+</ul>
+<h4 id="更新与合并"><a href="#更新与合并" class="headerlink" title="更新与合并"></a>更新与合并</h4><ul>
+<li><p>更新本地仓库至最新改动：</p>
+<p><code>git pull</code></p>
+</li>
+<li><p>合并其他分支到当前分支：</p>
+<p><code>git merge &lt;branch&gt;</code></p>
+<p>（可能出现冲突，待完善）</p>
+</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>查看本地仓库历史记录：<code>git log</code></p>
+<p>显示工作目录和暂存区的状态 ：<code>git status</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/test-my-site/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -509,7 +673,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
