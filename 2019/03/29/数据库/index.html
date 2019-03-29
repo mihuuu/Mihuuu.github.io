@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://mihuuu.github.io">
-  <title>Mihu的小世界</title>
+  <title>数据库 | Mihu的小世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep learning &amp; having fun :)">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mihu的小世界">
-<meta property="og:url" content="https://mihuuu.github.io/index.html">
+  <meta name="description" content="数据库ACID 原子性 Atomicity 事务的所有操作要么全部提交成功（commit），要么全部失败回滚（rollback） 回滚可以通过回滚日志来实现，反向执行修改操作。  一致性 Consistency 在一致性状态下，所有事务对一个数据的读取结果都是相同的。  隔离性 Isolation 一个事务所做的修改在最终提交以前，对其它事务是不可见的。  持久性 Durability 事务提交后">
+<meta name="keywords" content="Database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库">
+<meta property="og:url" content="https://mihuuu.github.io/2019/03/29/数据库/index.html">
 <meta property="og:site_name" content="Mihu的小世界">
-<meta property="og:description" content="Keep learning &amp; having fun :)">
+<meta property="og:description" content="数据库ACID 原子性 Atomicity 事务的所有操作要么全部提交成功（commit），要么全部失败回滚（rollback） 回滚可以通过回滚日志来实现，反向执行修改操作。  一致性 Consistency 在一致性状态下，所有事务对一个数据的读取结果都是相同的。  隔离性 Isolation 一个事务所做的修改在最终提交以前，对其它事务是不可见的。  持久性 Durability 事务提交后">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/19/5c90dbbb00efc.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/03/19/5c90d88ccc9b7.jpg">
+<meta property="og:updated_time" content="2019-03-29T11:40:31.619Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mihu的小世界">
-<meta name="twitter:description" content="Keep learning &amp; having fun :)">
+<meta name="twitter:title" content="数据库">
+<meta name="twitter:description" content="数据库ACID 原子性 Atomicity 事务的所有操作要么全部提交成功（commit），要么全部失败回滚（rollback） 回滚可以通过回滚日志来实现，反向执行修改操作。  一致性 Consistency 在一致性状态下，所有事务对一个数据的读取结果都是相同的。  隔离性 Isolation 一个事务所做的修改在最终提交以前，对其它事务是不可见的。  持久性 Durability 事务提交后">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/19/5c90dbbb00efc.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Mihu的小世界" type="application/atom+xml">
   
@@ -149,16 +154,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-数据库" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+            <article id="post-数据库" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/数据库/">数据库</a>
+    <h1 class="article-title" itemprop="name">
+      数据库
     </h1>
   
 
@@ -327,16 +330,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/29/数据库/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mihuuu.github.io/2019/03/29/数据库/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/29/pic/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pic</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -356,231 +418,14 @@
 
 
 
-
   
-    <article id="post-pic" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/pic/">pic</a>
-    </h1>
   
 
-        
-        <a href="/2019/03/29/pic/" class="archive-article-date">
-  	<time datetime="2019-03-29T11:26:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p><img src="https://i.loli.net/2019/03/19/5c9100f95ffe9.jpg" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/29/pic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hahaha" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/29/hahaha/">hahaha</a>
-    </h1>
   
 
-        
-        <a href="/2019/03/29/hahaha/" class="archive-article-date">
-  	<time datetime="2019-03-29T09:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Hello"><a href="#Hello" class="headerlink" title="Hello"></a>Hello</h2><p>djsdiwjqi</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/29/hahaha/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-test-my-site" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/24/test-my-site/">test_my_site</a>
-    </h1>
   
 
-        
-        <a href="/2018/10/24/test-my-site/" class="archive-article-date">
-  	<time datetime="2018-10-24T15:32:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="NONONO"><a href="#NONONO" class="headerlink" title="NONONO"></a>NONONO</h1><h2 id="FIRST"><a href="#FIRST" class="headerlink" title="FIRST"></a>FIRST</h2><p>我是一个人的猪</p>
-<h2 id="SEC"><a href="#SEC" class="headerlink" title="SEC"></a>SEC</h2><p>你呢</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/24/test-my-site/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -603,8 +448,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
