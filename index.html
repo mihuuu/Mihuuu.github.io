@@ -190,122 +190,9 @@
 <p>无并发时，事务串行一定满足隔离性，此时只要满足原子性，就一定能满足一致性。</p>
 <p>并发时，事务要满足原子性和隔离性才能满足一致性。</p>
 </blockquote>
-<h3 id="并发一致性问题"><a href="#并发一致性问题" class="headerlink" title="并发一致性问题"></a>并发一致性问题</h3><ul>
-<li>脏读</li>
-<li>不可重复读</li>
-<li>幻影读</li>
-</ul>
-<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><ul>
-<li>未提交读 Read Uncommitted</li>
-<li>提交读 Read Committed</li>
-<li>可重复读 Repeatable Read</li>
-<li>可串行化 Serializable</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>隔离级别</th>
-<th>脏读</th>
-<th>不可重复读</th>
-<th>幻影读</th>
-<th>加锁读</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>未提交读</td>
-<td>√</td>
-<td>√</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>提交读</td>
-<td>×</td>
-<td>√</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>可重复读</td>
-<td>×</td>
-<td>×</td>
-<td>√</td>
-<td>×</td>
-</tr>
-<tr>
-<td>可串行化</td>
-<td>×</td>
-<td>×</td>
-<td>×</td>
-<td>√</td>
-</tr>
-</tbody>
-</table>
-<h3 id="三大范式"><a href="#三大范式" class="headerlink" title="三大范式"></a>三大范式</h3><ul>
-<li>第一范式 1NF</li>
-<li>第二范式 2NF</li>
-<li>第三范式 3NF</li>
-</ul>
-<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="B-树-B-树"><a href="#B-树-B-树" class="headerlink" title="B+树 / B-树"></a>B+树 / B-树</h3><p>平衡树</p>
-<p>为什么不用红黑树等数据结构？</p>
-<h3 id="内-外-左-右连接"><a href="#内-外-左-右连接" class="headerlink" title="内/外/左/右连接"></a>内/外/左/右连接</h3><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p><a href="http://blog.codinglabs.org/articles/theory-of-mysql-index.html" target="_blank" rel="noopener">MySQL索引背后的数据结构及算法原理</a></p>
-<h4 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h4><ul>
-<li><p>数据文件就是索引文件。叶节点data域保存了完整的数据记录，这种索引叫<strong>聚簇索引</strong> (Clustered index) </p>
-</li>
-<li><p>InnoDB 默认对<strong>主键</strong>建立索引；如果没有显式指定主键，MySQL 会自动选择一个可以唯一标识数据记录的列作为主键；如果不存在这种列，则 MySQL 自动生成一个隐含字段作为主键</p>
-</li>
-<li><p><strong>辅助索引</strong>data域存储的是对应主键的值。使用辅助索引需要两遍检索，首先检索辅助索引获得主键，然后用主键到主索引中检索获得记录。</p>
-</li>
-<li><p>一个叶子节点内的数据记录按照主键顺序存放，因此每次有一条新记录插入时，要根据主键插入适当的节点和位置；如果使用自增主键，每次新增记录就会顺序添加到节点的后续位置，效率很高。</p>
-<blockquote>
-<p>因为所有的辅助索引都会引用主索引，不建议使用过长的字段作为主键，否则会使辅助索引变得过大；</p>
-<p>用非单调的字段作为主键也不好，插入新数据时为了维持B+树特性要频繁调整，所以建立使用<strong>自增字段</strong> (AUTO_INCREMENT)。</p>
-</blockquote>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2019/03/19/5c90dbbb00efc.jpg" alt="InnoDB索引"></p>
-<h4 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h4><ul>
-<li><p>索引文件和数据文件是分离的</p>
-</li>
-<li><p>叶节点的data域存放的是数据记录的地址（非聚簇索引）</p>
-<blockquote>
-<p>每次读取磁盘获取数据，消耗时间</p>
-</blockquote>
-</li>
-<li><p>辅助索引data域存放的也是地址</p>
-</li>
-</ul>
-<p><img src="https://i.loli.net/2019/03/19/5c90d88ccc9b7.jpg" alt="MyISAM索引"></p>
-<p>InnoDB 和 MyISAM 的区别</p>
-<ul>
-<li>InnoDB 是事务型的，可执行 commit / rollback</li>
-<li>InnoDB 支持行级锁，MyISAM 只支持表级锁</li>
-</ul>
-<blockquote>
-<p>MyISAM 适用于需要大量查询的应用（大量写操作不好，会锁整张表）</p>
-</blockquote>
-<p>索引的优缺点：</p>
-<p>优点：加快查询速度；排序与分组</p>
-<p>缺点：1. 索引需要额外存储空间 2.插入/删除数据时维护索引的开销</p>
-<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p><a href="http://www.jfox.info/archives/652.html" target="_blank" rel="noopener">20+条MySQL性能优化的最佳经验</a></p>
-<p>可以使用 Explain 来分析 SELECT 语句</p>
-<h4 id="优化数据查询"><a href="#优化数据查询" class="headerlink" title="优化数据查询"></a>优化数据查询</h4><ul>
-<li>使用索引覆盖查询，减少扫描的行数</li>
-<li>减少返回的行：使用 LIMIT 语句来限制返回数据（只要一行时用 LIMIT 1）</li>
-<li>减少返回的列：尽量避免使用 SELECT *，需要什么字段就取什么</li>
-</ul>
-<h4 id="切分"><a href="#切分" class="headerlink" title="切分"></a>切分</h4><ul>
-<li><p>水平切分</p>
-<p>将同一个表中的记录拆分到多个结构相同的表中。当一个表的数据不断增多时，sharding 可以将数据分布到集群的不同节点上，从而缓存单个数据库的压力。</p>
-</li>
-<li><p>垂直切分</p>
-<p>将一张表按列切分成多个表，通常是按照列的关系密集程度进行切分，也可以利用垂直切分将经常被使用的列和不经常被使用的列切分到不同的表中。eg: 将电商数据库垂直切分成商品数据库、用户数据库等。</p>
-<p>注意：切分的表不要经常 Join，否则性格比不切分还要差好多。</p>
-</li>
-</ul>
-<p>分区</p>
-<h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><h3 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h3>
+        
+          <a class="article-more-a" href="/2019/03/29/数据库/#more">more >></a>
+        
       
 
       
@@ -666,11 +553,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color5">test</a>
               </li>
             
             <div class="clearfix"></div>
