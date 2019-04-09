@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://mihuuu.github.io">
-  <title>hahaha | Mihu的小世界</title>
+  <title>2019微软春招实习笔试 | Mihu的小世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hellodjsdiwjqi">
-<meta name="keywords" content="test">
+  <meta name="description" content="先发到牛客网上了：https://www.nowcoder.com/discuss/173201  昨晚笔试被微软爸爸虐哭😰其实是我太菜了hh 虽然做题做得要自闭了…还是先记录一下以便之后再想解法。以下是我自己理解的题意，如有纰漏请大家指正～   1. 击鼓传花嗯…突发奇想给这题起了个名 N个人每个人编号1-N，编号能整除的两个人互相连通，从编号为i的人开始传，最后要传回i手上，要在T次之内传完">
+<meta name="keywords" content="笔试 实习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hahaha">
-<meta property="og:url" content="https://mihuuu.github.io/2019/03/29/hahaha/index.html">
+<meta property="og:title" content="2019微软春招实习笔试">
+<meta property="og:url" content="https://mihuuu.github.io/2019/04/09/2019微软春招实习笔试/index.html">
 <meta property="og:site_name" content="Mihu的小世界">
-<meta property="og:description" content="Hellodjsdiwjqi">
+<meta property="og:description" content="先发到牛客网上了：https://www.nowcoder.com/discuss/173201  昨晚笔试被微软爸爸虐哭😰其实是我太菜了hh 虽然做题做得要自闭了…还是先记录一下以便之后再想解法。以下是我自己理解的题意，如有纰漏请大家指正～   1. 击鼓传花嗯…突发奇想给这题起了个名 N个人每个人编号1-N，编号能整除的两个人互相连通，从编号为i的人开始传，最后要传回i手上，要在T次之内传完">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-29T09:50:20.345Z">
+<meta property="og:updated_time" content="2019-04-09T12:28:48.085Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hahaha">
-<meta name="twitter:description" content="Hellodjsdiwjqi">
+<meta name="twitter:title" content="2019微软春招实习笔试">
+<meta name="twitter:description" content="先发到牛客网上了：https://www.nowcoder.com/discuss/173201  昨晚笔试被微软爸爸虐哭😰其实是我太菜了hh 虽然做题做得要自闭了…还是先记录一下以便之后再想解法。以下是我自己理解的题意，如有纰漏请大家指正～   1. 击鼓传花嗯…突发奇想给这题起了个名 N个人每个人编号1-N，编号能整除的两个人互相连通，从编号为i的人开始传，最后要传回i手上，要在T次之内传完">
   
     <link rel="alternative" href="/atom.xml" title="Mihu的小世界" type="application/atom+xml">
   
@@ -151,27 +151,65 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hahaha" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-2019微软春招实习笔试" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hahaha
+      2019微软春招实习笔试
     </h1>
   
 
         
-        <a href="/2019/03/29/hahaha/" class="archive-article-date">
-  	<time datetime="2019-03-29T09:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
+        <a href="/2019/04/09/2019微软春招实习笔试/" class="archive-article-date">
+  	<time datetime="2019-04-09T07:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hello"><a href="#Hello" class="headerlink" title="Hello"></a>Hello</h2><p>djsdiwjqi</p>
+        <p>先发到牛客网上了：<a href="https://www.nowcoder.com/discuss/173201" target="_blank" rel="noopener">https://www.nowcoder.com/discuss/173201</a></p>
+<blockquote>
+<p>昨晚笔试被微软爸爸虐哭😰其实是我太菜了hh 虽然做题做得要自闭了…还是先记录一下以便之后再想解法。以下是我自己理解的题意，如有纰漏请大家指正～ </p>
+</blockquote>
+<h3 id="1-击鼓传花"><a href="#1-击鼓传花" class="headerlink" title="1. 击鼓传花"></a>1. 击鼓传花</h3><p>嗯…突发奇想给这题起了个名</p>
+<p>N个人每个人编号1-N，编号能整除的两个人互相连通，从编号为i的人开始传，最后要传回i手上，要在T次之内传完，问最多有几种传法？ </p>
+<a id="more"></a>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">参数：N=3, i=2, T=2</span><br><span class="line">路径：2-1-2</span><br><span class="line">返回：1 </span><br><span class="line"></span><br><span class="line">参数：N=3, i=2, T=4 </span><br><span class="line">2-1-2 </span><br><span class="line">2-1-3-1-2 </span><br><span class="line">2-1-2-1-2 </span><br><span class="line">返回：3</span><br></pre></td></tr></table></figure>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>DFS </li>
+<li>DP </li>
+</ol>
+<h3 id="2-最少射击几次"><a href="#2-最少射击几次" class="headerlink" title="2. 最少射击几次"></a>2. 最少射击几次</h3><p>N个瓶子都有编号，每次能射击1个或多个瓶子，如果是回文的就能一次性击倒。最少几次能全击倒？ </p>
+<h4 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：[<span class="number">1</span>, <span class="number">2</span>] </span><br><span class="line">输出：<span class="number">2</span></span><br><span class="line"></span><br><span class="line">输入：[<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">1</span>,<span class="number">5</span>] </span><br><span class="line">输出：<span class="number">3</span> </span><br><span class="line">说明：第一次先射<span class="number">3</span>，变成[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">5</span>]，因为有[<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>]回文可以一次击倒，剩下[<span class="number">5</span>]再一次</span><br></pre></td></tr></table></figure>
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p> 本来看到回文就一直在想怎么找回文，后来感觉不对啊，好像方向走偏了… </p>
+<p> 看大佬评论说可以用DP，不过状态转移方程还没想明白… </p>
+<h3 id="3-排队"><a href="#3-排队" class="headerlink" title="3. 排队"></a>3. 排队</h3><p>N个人排队编号1-N，可能3种情况： </p>
+<p>E1: 排在队首的人离开 </p>
+<p>E2: 队伍中编号为K的人离开 </p>
+<p>E3: 返回编号为X的人在队伍中的位置 </p>
+<p>输入一组query，返回所有E3累加的结果 </p>
+<h4 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">N=5 query=3 </span><br><span class="line">[1,0] [2,3] [3,2] </span><br><span class="line">输出：1 </span><br><span class="line">说明：第一次队首编号1的人走了，第二次编号为3的人走了，第三次编号2的人排在队伍中的第一个</span><br></pre></td></tr></table></figure>
+<h4 id="思路-2"><a href="#思路-2" class="headerlink" title="思路"></a>思路</h4><p>感觉这题是4题里相对最容易的了，可是我还是有2个测试用例没过TAT </p>
+<p>我想得比较简单，用一个数组pos保存每个人在队中的位置，E1则每人pos-1；E2则K之后的人pos-1，K之前的不变；E3则将pos[x]累加。 </p>
+<h3 id="4-蜜蜂采蜜"><a href="#4-蜜蜂采蜜" class="headerlink" title="4. 蜜蜂采蜜"></a>4. 蜜蜂采蜜</h3><p>蜜蜂从家里出发，有几朵花和几处仓库（有坐标），每朵花有一份蜂蜜，蜜蜂一次只能带一份蜂蜜，可以先把采好的蜂蜜送到仓库，<strong>最后要回到家里</strong>。蜜蜂飞一单位的距离就会消耗一单位的时间（欧式距离），在限定时间T内，蜜蜂最多能采多少蜂蜜？      </p>
+<h4 id="测试-3"><a href="#测试-3" class="headerlink" title="测试"></a>测试</h4><p>这题数据太多记不清了…只记得参数了： </p>
+<ul>
+<li>home坐标：[x, y] </li>
+<li>m朵花 </li>
+<li>n个仓库</li>
+<li>花的坐标 二维数组 </li>
+<li>仓库坐标 二维数组 </li>
+<li>限定时间 T </li>
+</ul>
+<h4 id="思路-3"><a href="#思路-3" class="headerlink" title="思路"></a>思路</h4><p>这题其实不太会…本来想用贪心，每次找最近的花/仓库，但是还要保证最后能在规定时间里到家，所以应该还要保存之前的路径？后来选择放弃这题了… </p>
+<blockquote>
+<p>最后总结一下吧，微软的编程题首先是理解题目，其实每题都是用应用场景包装了一层，要从中抽象出核心的问题。 </p>
+<p>时间其实不是太大问题…因为真不会的题就算耗很多时间也搞不出来…所以平时不太刷算法题就很吃亏。另外感觉DP的挺常用的，不过自己DP还用得不熟，所以有些题只是有思路但跑不出来…以后要多多练习！</p>
+</blockquote>
 
       
 
@@ -185,7 +223,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">笔试 实习</a>
         		</li>
       		
 		</ul>
@@ -241,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://mihuuu.github.io/2019/03/29/hahaha/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mihuuu.github.io/2019/04/09/2019微软春招实习笔试/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -255,18 +293,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/03/29/pic/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          pic
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/24/test-my-site/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test_my_site</div>
+    <a href="/2019/04/09/2019百度春招实习笔试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019百度春招实习笔试</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -384,11 +413,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">test</a>
+                <a href="javascript:void(0)" class="js-tag color1">笔试 实习</a>
               </li>
             
             <div class="clearfix"></div>
