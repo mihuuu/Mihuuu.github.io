@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://mihuuu.github.io">
-  <title>Archives | Mihu&#39;s blog</title>
+  <title>Java线程池原理与使用 | Mihu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Keep track of learning process and ideas">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mihu&#39;s blog">
-<meta property="og:url" content="https://mihuuu.github.io/archives/index.html">
+  <meta name="description" content="参考《Java并发编程的艺术》第9章内容  线程池实现原理ThreadPoolExecutor执行 execute() 方法的流程图如下：   如果当前运行的线程少于corePoolSize，则创建新线程来执行任务 如果线程数大于corePoolSize，则将任务加入 BlockingQueue 如果队列已满无法加入，当前运行线程小于maxinumPoolSize，则创建新的线程来处理任务 若超">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java线程池原理与使用">
+<meta property="og:url" content="https://mihuuu.github.io/2019/04/10/Java线程池原理与使用/index.html">
 <meta property="og:site_name" content="Mihu&#39;s blog">
-<meta property="og:description" content="Keep track of learning process and ideas">
+<meta property="og:description" content="参考《Java并发编程的艺术》第9章内容  线程池实现原理ThreadPoolExecutor执行 execute() 方法的流程图如下：   如果当前运行的线程少于corePoolSize，则创建新线程来执行任务 如果线程数大于corePoolSize，则将任务加入 BlockingQueue 如果队列已满无法加入，当前运行线程小于maxinumPoolSize，则创建新的线程来处理任务 若超">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cadbdb799bd0.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/04/10/5cadbddb56709.jpg">
+<meta property="og:updated_time" content="2019-04-10T10:09:01.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mihu&#39;s blog">
-<meta name="twitter:description" content="Keep track of learning process and ideas">
+<meta name="twitter:title" content="Java线程池原理与使用">
+<meta name="twitter:description" content="参考《Java并发编程的艺术》第9章内容  线程池实现原理ThreadPoolExecutor执行 execute() 方法的流程图如下：   如果当前运行的线程少于corePoolSize，则创建新线程来执行任务 如果线程数大于corePoolSize，则将任务加入 BlockingQueue 如果队列已满无法加入，当前运行线程小于maxinumPoolSize，则创建新的线程来处理任务 若超">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/10/5cadbdb799bd0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Mihu&#39;s blog" type="application/atom+xml">
   
@@ -149,36 +154,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Java线程池原理与使用" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/10/Java线程池原理与使用/" class="archive-article-date">
-  	<time datetime="2019-04-10T10:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/10/Java线程池原理与使用/">Java线程池原理与使用</a>
+    <h1 class="article-title" itemprop="name">
+      Java线程池原理与使用
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/04/10/Java线程池原理与使用/" class="archive-article-date">
+  	<time datetime="2019-04-10T10:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>参考《Java并发编程的艺术》第9章内容</p>
+</blockquote>
+<h3 id="线程池实现原理"><a href="#线程池实现原理" class="headerlink" title="线程池实现原理"></a>线程池实现原理</h3><p>ThreadPoolExecutor执行 execute() 方法的流程图如下：</p>
+<p><img src="https://i.loli.net/2019/04/10/5cadbdb799bd0.jpg" alt=""></p>
+<ol>
+<li>如果当前运行的线程少于corePoolSize，则创建新线程来执行任务</li>
+<li>如果线程数大于corePoolSize，则将任务加入 BlockingQueue</li>
+<li>如果队列已满无法加入，当前运行线程小于maxinumPoolSize，则创建新的线程来处理任务</li>
+<li>若超出maximumPoolSize，将采取拒绝策略</li>
+</ol>
+<a id="more"></a>
+<p>线程池中的线程执行完当前任务后，会循环获取队列中的任务来执行。</p>
+<p><img src="https://i.loli.net/2019/04/10/5cadbddb56709.jpg" alt=""></p>
+<h3 id="线程池的使用"><a href="#线程池的使用" class="headerlink" title="线程池的使用"></a>线程池的使用</h3><h4 id="1-线程池的创建"><a href="#1-线程池的创建" class="headerlink" title="1. 线程池的创建"></a>1. 线程池的创建</h4><p>通过 ThreadPoolExecutor 来创建一个线程池：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> ThreadPoolExecutor(corePoolSize, maximumPoolSize, keepAliveTime, milliseconds, runnableTaskQueue, handler);</span><br></pre></td></tr></table></figure>
+<p>传入参数含义：</p>
+<ul>
+<li><p><strong>corePoolSize：</strong>核心线程池大小。当提交一个新任务到线程池，会创建一个线程来执行任务（即使有其他空闲线程），直到核心线程池已满。</p>
+</li>
+<li><p><strong>maximumPoolSize：</strong>线程池允许创建的最大线程数。如果用了无界队列，该参数就没有效果。</p>
+</li>
+<li><p><strong>keepAliveTime：</strong>线程池的工作线程空闲后保持存活的时间。</p>
+</li>
+<li><p>milliseconds：时间单位</p>
+</li>
+<li><p><strong>runnableTaskQueue 任务阻塞队列</strong></p>
+<ul>
+<li>ArrayBlockingQueue：基于数组的有界阻塞队列，FIFO</li>
+<li>LinkedBlockingQueue：基于链表的无界阻塞队列，FIFO。静态工厂方法 Executors.newFixedThreadPool()使用了该队列。</li>
+<li>SynchronousQueue：一个不存储元素的阻塞队列。必须等待一个线程移除后才能插入新的县城，否则一直阻塞。Executors.newCachedThreadPool()使用了该队列。</li>
+<li>PriorityBlockingQueue：一个具有优先级的无限阻塞队列。</li>
+</ul>
+</li>
+<li><p><strong>RejectedExecutionHandler 拒绝策略</strong></p>
+<p>若最大线程池已满，无法处理新的任务，有以下几种拒绝策略：</p>
+<ul>
+<li>AbortPolicy：直接抛出异常，是默认情况的策略。</li>
+<li>CallerRunsPolicy：交给调用者所在线程来运行任务 </li>
+<li>DiscardOldestPolicy：丢弃队列里最早的一个任务，并执行当前任务 </li>
+<li>DiscardPolicy：不处理，丢弃掉。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-向线程池提交任务"><a href="#2-向线程池提交任务" class="headerlink" title="2. 向线程池提交任务"></a>2. 向线程池提交任务</h4><p>有两种方法，execute() 和 submit()：</p>
+<ul>
+<li><p><strong>execute()</strong> 用于提交不需要返回值的任务，所以无法判断任务是否被线程池执行成功</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">threadsPool.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//TODO</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>submit()</strong> 用于提交需要返回值的任务，线程池会返回一个future类型的对象，可以通过future.get()获取返回值，判断任务是否执行成功。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;Object&gt; future = executor.submit(hasReturnValueTask);</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Object s = future.get();</span><br><span class="line">&#125; <span class="keyword">catch</span> &#123;</span><br><span class="line">    <span class="comment">//TODO</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="3-关闭线程池"><a href="#3-关闭线程池" class="headerlink" title="3. 关闭线程池"></a>3. 关闭线程池</h4><p>可以使用 shutdown 或 shutdownNow 方法来关闭线程池，它们的原理是遍历线程池中的工作线程，逐个调用线程的 interrupt 方法来中断线程。二者的区别是：</p>
+<ul>
+<li>shutdown 将线程池的状态设置为SHUTDOWN，<strong>中断所有没有正在执行任务的线程</strong>。</li>
+<li>shutdownNow 先将线程池状态设置为 STOP，然后尝试停止所有正在执行或暂停任务的线程，并返回等待执行任务的列表。</li>
+</ul>
+<h4 id="4-合理配置线程池"><a href="#4-合理配置线程池" class="headerlink" title="4. 合理配置线程池"></a>4. 合理配置线程池</h4><p>分析任务的特性，可从以下几个角度来分析：</p>
+<ul>
+<li><p>任务性质：CPU密集型 / IO密集型 / 混合型</p>
+<p>CPU密集型的任务应配置尽可能少的线程，比如 Ncpu+1 个线程的线程池。</p>
+<p>IO密集型的任务应配置尽可能多的线程，比如 2*Ncpu</p>
+</li>
+<li><p>任务优先级</p>
+</li>
+<li><p>任务执行时间</p>
+</li>
+<li><p>任务依赖性（数据库连接）</p>
+</li>
+</ul>
+<blockquote>
+<p>待补充，实际项目中具体怎么配置core和max线程数？</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -190,103 +267,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mihuuu.github.io/2019/04/10/Java线程池原理与使用/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/09/2019微软春招实习笔试/" class="archive-article-date">
-  	<time datetime="2019-04-09T07:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/09/2019微软春招实习笔试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2019微软春招实习笔试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/09/2019微软春招实习笔试/">2019微软春招实习笔试</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">实习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/09/2019百度春招实习笔试/" class="archive-article-date">
-  	<time datetime="2019-04-09T07:09:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/09/2019百度春招实习笔试/">2019百度春招实习笔试</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">实习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -309,8 +389,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

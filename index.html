@@ -151,6 +151,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java线程池原理与使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/10/Java线程池原理与使用/">Java线程池原理与使用</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/10/Java线程池原理与使用/" class="archive-article-date">
+  	<time datetime="2019-04-10T10:07:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>参考《Java并发编程的艺术》第9章内容</p>
+</blockquote>
+<h3 id="线程池实现原理"><a href="#线程池实现原理" class="headerlink" title="线程池实现原理"></a>线程池实现原理</h3><p>ThreadPoolExecutor执行 execute() 方法的流程图如下：</p>
+<p><img src="https://i.loli.net/2019/04/10/5cadbdb799bd0.jpg" alt=""></p>
+<ol>
+<li>如果当前运行的线程少于corePoolSize，则创建新线程来执行任务</li>
+<li>如果线程数大于corePoolSize，则将任务加入 BlockingQueue</li>
+<li>如果队列已满无法加入，当前运行线程小于maxinumPoolSize，则创建新的线程来处理任务</li>
+<li>若超出maximumPoolSize，将采取拒绝策略</li>
+</ol>
+        
+          <a class="article-more-a" href="/2019/04/10/Java线程池原理与使用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/10/Java线程池原理与使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2019微软春招实习笔试" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -416,6 +502,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">实习</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
